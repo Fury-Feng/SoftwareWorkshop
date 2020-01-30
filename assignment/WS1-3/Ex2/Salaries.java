@@ -88,21 +88,19 @@ public class Salaries {
      */
     public boolean not3TimesHigher() {
 
-        ArrayList<Double> average3TimeSalary = averageSalaries();
+        for (int i = 0; i < averageSalaries().size(); i++) {
+            ArrayList<Double> average3TimeSalary = averageSalaries();
 
-        for (int i = 0; i < average3TimeSalary.size(); i ++) {
             double employeeAvgSalary = average3TimeSalary.get(i);
             average3TimeSalary.remove(i);
 
-            double[] otherSalary = new double[average3TimeSalary.size()];
             double otherTotalSalary = 0;
 
-            for (int j = 0; j < otherSalary.length; j ++) {
-                otherSalary[j] = average3TimeSalary.get(j);
-                otherTotalSalary = otherTotalSalary + otherSalary[j];
+            for (int j = 0; j < average3TimeSalary.size(); j ++) {
+                otherTotalSalary = otherTotalSalary + average3TimeSalary.get(j);
             }
 
-            if (employeeAvgSalary > (otherTotalSalary / otherSalary.length) * 3) {
+            if (employeeAvgSalary > (otherTotalSalary / average3TimeSalary.size()) * 3) {
                 return false;
             }
         }
